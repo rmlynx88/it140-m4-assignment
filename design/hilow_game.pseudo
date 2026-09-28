@@ -1,29 +1,46 @@
-# IT 140 Module Four Assignment
-# Higher/Lower Game Pseudocode Template
-#
-# Complete the TODO prompts below with your own pseudocode.
-# Keep this file in .pseudo format for submission.
-#
-# Use clear indentation to show decisions and repeated behavior.
-# Your finished pseudocode should address every requirement in the
-# current Module Four Assignment Guidelines and Rubric.
-
 START hilow_game
 
-    # Establish a valid guessing range.
-    TODO: Obtain the lower and upper bounds.
-    TODO: Repeat as needed until the bounds satisfy the requirement.
+    // Declare variables
+    DECLARE lowerBound AS INTEGER
+    DECLARE upperBound AS INTEGER
+    DECLARE secretNumber AS INTEGER
+    DECLARE guess AS INTEGER
 
-    # Establish the number the player is trying to guess.
-    TODO: Generate the required random number from the valid range.
+    // Welcome message
+    DISPLAY "Welcome to the higher/lower game, Bella!"
 
-    # Play the game.
-    TODO: Obtain and validate a guess using the selected bounds.
-    TODO: Repeat the required game behavior until the correct guess.
-        TODO: Compare a valid guess and provide the required feedback.
-        TODO: Obtain and validate another guess when play continues.
+    // Obtain and validate bounds
+    DISPLAY "Enter the lower bound: "
+    INPUT lowerBound
+    DISPLAY "Enter the upper bound: "
+    INPUT upperBound
+
+    WHILE upperBound <= lowerBound
+        DISPLAY "The lower bound must be less than the upper bound."
+        DISPLAY "Enter the lower bound: "
+        INPUT lowerBound
+        DISPLAY "Enter the upper bound: "
+        INPUT upperBound
+    ENDWHILE
+
+    // Generate random number
+    SET secretNumber = RANDOM(lowerBound, upperBound)
+
+    DISPLAY "Great, now guess a number between ", lowerBound, " and ", upperBound, ": "
+    INPUT guess
+
+    // Play the game loop
+    WHILE guess != secretNumber
+        IF guess < secretNumber THEN
+            DISPLAY "Nope, too low."
+        ELSE
+            DISPLAY "Nope, too high."
+        ENDIF
+        
+        DISPLAY "Guess another number: "
+        INPUT guess
+    ENDWHILE
+
+    DISPLAY "You got it!"
 
 END hilow_game
-
-# === References ===
-# TODO: Add references for sources you used, or delete this line if unused.
